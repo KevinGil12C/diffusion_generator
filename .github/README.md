@@ -12,7 +12,7 @@ python install.py
 
 ## 📖 Documentación Completa
 
-Lee el [README.md](README.md) para instrucciones detalladas de instalación y uso.
+Lee el [README.md](../README.md) para instrucciones detalladas de instalación y uso.
 
 ## 🐛 Problemas
 

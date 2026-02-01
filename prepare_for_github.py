@@ -51,6 +51,7 @@ def main():
     print("   📦 Nombre: diffusion_generator")
     print("   👤 Usuario: KevinGil12C")
     print("   🔗 URL: https://github.com/KevinGil12C/diffusion_generator")
+    print("   📦 Nombre: diffusion_generator")
 
     print("\n📝 PRÓXIMOS PASOS:")
     print("   1. Crear repositorio en GitHub: KevinGil12C/diffusion_generator")
