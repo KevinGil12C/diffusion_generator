@@ -54,7 +54,7 @@
 ### Instalación Automática (Recomendado)
 ```bash
 # Clonar y configurar automáticamente
-git clone https://github.com/tuusuario/ai-image-studio.git
+git clone https://github.com/KevinGil12C/diffusion_generator
 cd ai-image-studio
 python install.py
 ```
@@ -62,7 +62,7 @@ python install.py
 ### Instalación Manual
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tuusuario/ai-image-studio.git
+git clone https://github.com/KevinGil12C/diffusion_generator
 cd ai-image-studio
 
 # 2. Verificar requisitos
