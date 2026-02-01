@@ -54,16 +54,26 @@
 ### Instalación Automática (Recomendado)
 ```bash
 # Clonar y configurar automáticamente
+<<<<<<< HEAD
 git clone https://github.com/KevinGil12C/diffusion_generator.git
 cd diffusion_generator
+=======
+git clone https://github.com/KevinGil12C/diffusion_generator
+cd ai-image-studio
+>>>>>>> b7f1d60746f7ffd6299ea69dbd6cb34cc7a7373e
 python install.py
 ```
 
 ### Instalación Manual
 ```bash
 # 1. Clonar el repositorio
+<<<<<<< HEAD
 git clone https://github.com/KevinGil12C/diffusion_generator.git
 cd diffusion_generator
+=======
+git clone https://github.com/KevinGil12C/diffusion_generator
+cd ai-image-studio
+>>>>>>> b7f1d60746f7ffd6299ea69dbd6cb34cc7a7373e
 
 # 2. Verificar requisitos
 python -c "import sys; print('Python:', sys.version_info[:2]); import psutil; print('RAM:', psutil.virtual_memory().total//(1024**3), 'GB')"
