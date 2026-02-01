@@ -127,6 +127,9 @@ def show_download_instructions():
         print(f"     {url}")
 
     print()
+    print("🔗 REPOSITORIO OFICIAL:")
+    print("   https://github.com/KevinGil12C/diffusion_generator")
+    print()
     print("💡 CONSEJOS:")
     print("   • Usa un gestor de descargas para archivos grandes")
     print("   • Verifica que los archivos no estén corruptos")
@@ -188,7 +191,8 @@ def main():
     print()
 
     print("📚 INSTRUCCIONES COMPLETAS:")
-    print("   Lee el README.md para guía detallada")
+    print("   Lee el README.md en el repositorio:")
+    print("   https://github.com/KevinGil12C/diffusion_generator")
     print()
 
     print("🚀 ¡Sigue las instrucciones de descarga y estarás listo!")

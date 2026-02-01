@@ -54,16 +54,16 @@
 ### Instalación Automática (Recomendado)
 ```bash
 # Clonar y configurar automáticamente
-git clone https://github.com/tuusuario/ai-image-studio.git
-cd ai-image-studio
+git clone https://github.com/KevinGil12C/diffusion_generator.git
+cd diffusion_generator
 python install.py
 ```
 
 ### Instalación Manual
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tuusuario/ai-image-studio.git
-cd ai-image-studio
+git clone https://github.com/KevinGil12C/diffusion_generator.git
+cd diffusion_generator
 
 # 2. Verificar requisitos
 python -c "import sys; print('Python:', sys.version_info[:2]); import psutil; print('RAM:', psutil.virtual_memory().total//(1024**3), 'GB')"
@@ -79,6 +79,16 @@ python verify_setup.py
 ```
 
 Esto preparará la estructura de directorios y verificará que todo esté configurado correctamente.
+
+### Preparación Final para GitHub
+
+Antes de subir a GitHub, ejecuta:
+
+```bash
+python prepare_for_github.py
+```
+
+Este script limpiará, verificará y te dará las instrucciones exactas para el commit inicial.
 
 ---
 
@@ -305,9 +315,10 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 🙏 Créditos
 
-**Desarrollado por**: Kevscl
+**Desarrollado por**: KevinGil12C
 - **Especialización**: Full-Stack Development & AI Integration
 - **Tecnologías**: Python, FastAPI, Symfony, Stable Diffusion
+- **Repositorio**: https://github.com/KevinGil12C/diffusion_generator
 
 ---
 
