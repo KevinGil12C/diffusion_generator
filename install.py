@@ -182,7 +182,30 @@ def main():
     show_startup_instructions()
 
     print_header("✅ INSTALACIÓN COMPLETADA")
-    print("¡Sigue las instrucciones de descarga y estarás listo!")
+
+    print("🎯 PRUEBA EL SETUP:")
+    print("   python verify_setup.py")
+    print()
+
+    print("📚 INSTRUCCIONES COMPLETAS:")
+    print("   Lee el README.md para guía detallada")
+    print()
+
+    print("🚀 ¡Sigue las instrucciones de descarga y estarás listo!")
+
+    # Ejecutar verificación automática
+    print("\n🔍 EJECUTANDO VERIFICACIÓN AUTOMÁTICA...")
+    try:
+        import subprocess
+        result = subprocess.run([sys.executable, 'verify_setup.py'],
+                              capture_output=True, text=True, timeout=30)
+        if result.returncode == 0:
+            print("✅ Verificación completada exitosamente")
+        else:
+            print("⚠️  Verificación completada con advertencias")
+    except Exception as e:
+        print(f"⚠️  No se pudo ejecutar verificación automática: {e}")
+        print("   Ejecuta manualmente: python verify_setup.py")
 
 if __name__ == "__main__":
     main()

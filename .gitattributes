@@ -1,0 +1,43 @@
+# AI Image Studio - Git Attributes
+# =================================
+
+# Scripts ejecutables
+*.py    text eol=lf
+*.sh    text eol=lf
+*.bat   text eol=crlf
+
+# Archivos de configuración
+*.json  text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.env*  text eol=lf
+
+# Documentación
+*.md    text eol=lf
+*.txt   text eol=lf
+
+# Archivos binarios (no diff)
+*.safetensors binary
+*.bin         binary
+*.ckpt        binary
+*.pth         binary
+*.onnx        binary
+
+# Imágenes
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.svg   text
+
+# Videos (si se generan)
+*.mp4   binary
+*.webm  binary
+
+# Archivos de lock
+composer.lock -text
+package-lock.json -text
+poetry.lock -text
+
+# Archivos de directorios vacíos
+.gitkeep text eol=lf

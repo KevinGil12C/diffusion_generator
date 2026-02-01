@@ -72,12 +72,13 @@ python -c "import sys; print('Python:', sys.version_info[:2]); import psutil; pr
 cd api
 pip install -r requirements.txt
 
-# 4. Limpiar repositorio (IMPORTANTE)
+# 4. Limpiar y verificar setup
 cd ..
 python clean_repository.py
+python verify_setup.py
 ```
 
-Esto eliminará archivos pesados y preparará la estructura de directorios.
+Esto preparará la estructura de directorios y verificará que todo esté configurado correctamente.
 
 ---
 
@@ -133,6 +134,22 @@ api/models/
 - Los archivos `.safetensors` son más seguros que los `.ckpt`
 
 ---
+
+## 🔍 Verificación de Setup
+
+Antes de usar el sistema, verifica que todo esté configurado:
+
+```bash
+# Verificar setup completo
+python verify_setup.py
+```
+
+Este script comprobará:
+- ✅ Versión de Python y dependencias
+- ✅ Estructura de directorios
+- ✅ Modelos descargados
+- ✅ Archivos de configuración
+- ✅ Setup opcional de PHP/Symfony
 
 ## 🎯 Uso
 
