@@ -164,7 +164,6 @@ Este script comprobará:
 ## 🎯 Uso
 
 ### Iniciar el Servidor
-
 ```bash
 cd api
 python main.py
@@ -173,7 +172,6 @@ python main.py
 El servidor estará disponible en: **http://127.0.0.1:8000**
 
 ### Interfaz Web
-
 1. Abre tu navegador en `http://127.0.0.1:8000`
 2. Selecciona un **Preset** de la sección "Herramientas de Edición"
 3. Sube una imagen (para modos img2img)
@@ -191,21 +189,19 @@ El servidor estará disponible en: **http://127.0.0.1:8000**
 ## 🔧 Configuración
 
 ### Variables de Entorno
-
 Crea un archivo `.env` en la raíz del proyecto:
 ```bash
 # Puerto del servidor
 PORT=8000
 
 # Configuración de GPU (opcional)
-CUDA_VISIBLE_DEVICES=
+CUDA_VISIBLE_DEVICES=0
 
 # Nivel de logging
 LOG_LEVEL=INFO
 ```
 
 ### Configuración de Memoria
-
 Para sistemas con poca RAM, el sistema automáticamente:
 - Reduce resolución de video
 - Limita frames generados
@@ -270,7 +266,6 @@ Para sistemas con poca RAM, el sistema automáticamente:
 - **Prevención**: Usa fotos con buena iluminación frontal
 
 ### 📊 Monitoreo de Rendimiento
-
 ```bash
 # Ver logs del servidor
 tail -f api/server_log.txt
@@ -332,7 +327,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 Si encuentras problemas:
 
-1. Revisa la Sección de Solución de Problemas
+1. Revisa la [Sección de Solución de Problemas](#-solución-de-problemas)
 2. Verifica que todos los modelos estén descargados
 3. Asegúrate de tener Python 3.8+ y 16GB RAM
 
@@ -340,4 +335,4 @@ Si encuentras problemas:
 
 **¡Gracias por usar AI Image Studio!** 🎨✨
 
-_Transforma tus ideas en realidad con el poder de la Inteligencia Artificial_
+*Transforma tus ideas en realidad con el poder de la Inteligencia Artificial*
