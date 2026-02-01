@@ -1,0 +1,1058 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Diffusion Generator - Lite{% endblock %}
+
+{% block body %}
+<div class="min-h-screen bg-slate-900 text-slate-100 font-sans p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-12 border-b border-slate-800 pb-6">
+            <div>
+                <h1
+                    class="text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                    AI Image Studio
+                </h1>
+                <p class="text-slate-400 mt-2">Herramienta profesional de edición • Desarrollado por Kevscl</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 bg-slate-800/50 rounded-lg p-2 border border-slate-700/50">
+                    <div class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div>
+                    <span class="text-[10px] text-cyan-400 font-mono tracking-widest uppercase">Sistema Listo</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Sidebar / Controls -->
+            <aside class="lg:col-span-4 space-y-6">
+                <!-- Quick Presets (New) -->
+                <div
+                    class="bg-gradient-to-r from-slate-900/60 to-slate-800/60 p-4 rounded-2xl border border-slate-600/50 backdrop-blur-sm">
+                    <label class="block text-xs font-bold text-slate-300 mb-3 uppercase tracking-wider">🎨 Herramientas
+                        de Edición</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="applyPreset('anime')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-purple-600/20 border border-slate-700 hover:border-purple-500/50 transition-all group">
+                            <div class="text-xl mb-1">🎭</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-purple-300">Estilo Anime</div>
+                        </button>
+                        <button onclick="applyPreset('lingerie')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-pink-600/20 border border-slate-700 hover:border-pink-500/50 transition-all group">
+                            <div class="text-xl mb-1">👗</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-pink-300">Cambiar Ropa</div>
+                        </button>
+                        <button onclick="applyPreset('memerep')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-yellow-600/20 border border-slate-700 hover:border-yellow-500/50 transition-all group">
+                            <div class="text-xl mb-1">📢</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-yellow-300">Contenido Viral
+                            </div>
+                        </button>
+                        <button onclick="applyPreset('lingerie')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-pink-600/20 border border-slate-700 hover:border-pink-500/50 transition-all group">
+                            <div class="text-xl mb-1">👗</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-pink-300">Cambiar Ropa
+                            </div>
+                        </button>
+                        <button onclick="applyPreset('changepose')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-emerald-600/20 border border-slate-700 hover:border-emerald-500/50 transition-all group">
+                            <div class="text-xl mb-1">💃</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-emerald-300">Cambiar Pose
+                            </div>
+                        </button>
+                        <button onclick="applyPreset('makefunny')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-orange-600/20 border border-slate-700 hover:border-orange-500/50 transition-all group">
+                            <div class="text-xl mb-1">🎪</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-orange-300">Estilo Divertido
+                            </div>
+                        </button>
+                        <button onclick="applyPreset('hentai')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-pink-600/20 border border-slate-700 hover:border-pink-500/50 transition-all group">
+                            <div class="text-xl mb-1">🎨</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-pink-300">Arte Digital</div>
+                        </button>
+                        <button onclick="applyPreset('realism')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-cyan-600/20 border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                            <div class="text-xl mb-1">📸</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-cyan-300">Fotorealismo</div>
+                        </button>
+                        <button onclick="applyPreset('videoh')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-green-600/20 border border-slate-700 hover:border-green-500/50 transition-all group">
+                            <div class="text-xl mb-1">🎥</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-green-300">Animar (NSFW)</div>
+                        </button>
+                        <button onclick="applyPreset('news_anchor')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-blue-600/20 border border-slate-700 hover:border-blue-500/50 transition-all group">
+                            <div class="text-xl mb-1">🎤</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-blue-300">Noticiero (Fto)
+                            </div>
+                        </button>
+                        <button onclick="applyPreset('videoh')"
+                            class="text-left px-3 py-2 rounded-lg bg-slate-800 hover:bg-green-600/20 border border-slate-700 hover:border-green-500/50 transition-all group">
+                            <div class="text-xl mb-1">🎬</div>
+                            <div class="text-xs font-bold text-slate-200 group-hover:text-green-300">Animación</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode Selection -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 backdrop-blur-sm">
+                    <label class="block text-sm font-semibold text-slate-300 mb-3">Modo de Generación</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button id="mode-txt2img"
+                            class="mode-btn active px-3 py-2 rounded-xl bg-slate-900 border border-cyan-500/50 text-cyan-400 text-xs font-bold transition-all">TXT
+                            2 IMG</button>
+                        <button id="mode-img2img"
+                            class="mode-btn px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 text-xs font-bold transition-all">IMG
+                            2 IMG</button>
+                        <button id="mode-txt2vid"
+                            class="mode-btn px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 text-xs font-bold transition-all">TXT
+                            2 VID</button>
+                        <button id="mode-img2vid"
+                            class="mode-btn px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 text-xs font-bold transition-all">IMG
+                            2 VID</button>
+                    </div>
+                </div>
+
+                <!-- Model Selection -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 backdrop-blur-sm">
+                    <label class="block text-sm font-semibold text-slate-300 mb-3">Modelo Base</label>
+                    <select id="model-select"
+                        class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 focus:ring-2 focus:ring-cyan-500 transition-all outline-none">
+                        <optgroup label="SD1.5">
+                            <option value="v1-5-pruned-emaonly.safetensors">SD 1.5 Pruned (Original)</option>
+                            <option value="realisticVisionV60B1_v51HyperVAE.safetensors">Realistic Vision V6.0
+                                (HyperVAE)</option>
+                            <option value="cyberrealistic_v90.safetensors">CyberRealistic V9.0</option>
+                        </optgroup>
+                        <optgroup label="SDXL / Pony">
+                            <option value="ponyDiffusionV6XL_v6StartWithThisOne.safetensors">Pony Diffusion V6</option>
+                            <option value="autismmixSDXL_autismmixPony.safetensors">AutismMix SDXL</option>
+                            <option value="hentaiMixXLRoadTo_v50.safetensors">HentaiMix XL</option>
+                            <option value="oneObsession_v18.safetensors">One Obsession</option>
+                        </optgroup>
+                        <optgroup label="Flux">
+                            <option value="flux1-dev-fp8.safetensors">Flux.1 Dev (FP8)</option>
+                        </optgroup>
+                        <optgroup label="Video">
+                            <option value="svd.safetensors">SVD (14 Frames)</option>
+                            <option value="svd_xt.safetensors">SVD-XT (25 Frames)</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <!-- Initial Image (Hidden by default) -->
+                <div id="init-image-container"
+                    class="hidden bg-slate-800/50 p-6 rounded-2xl border border-slate-700 backdrop-blur-sm">
+                    <label class="block text-sm font-semibold text-slate-300 mb-3">Control de Referencia</label>
+                    <p class="text-[10px] text-slate-500 mb-4 font-medium italic">Esta imagen será el foco principal de
+                        la IA.</p>
+                    <div
+                        class="relative group cursor-pointer border-2 border-dashed border-slate-700 rounded-xl p-4 hover:border-cyan-500 transition-all">
+                        <input type="file" id="init-image-input" class="absolute inset-0 opacity-0 cursor-pointer"
+                            accept="image/*">
+                        <div id="init-image-preview" class="text-center">
+                            <div class="text-3xl mb-2 opacity-30 group-hover:scale-110 transition-transform">📸</div>
+                            <p class="text-xs text-slate-500">Subir foto de referencia</p>
+                        </div>
+                        <img id="init-image-img"
+                            class="hidden w-full h-48 object-contain bg-slate-900 rounded-lg shadow-inner" src=""
+                            alt="Preview">
+                    </div>
+                </div>
+
+                <!-- Prompts -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 backdrop-blur-sm space-y-4">
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="block text-sm font-semibold text-slate-300">Prompt Positivo</label>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] text-purple-400 font-bold uppercase tracking-tighter">Modo
+                                Mágico</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="magic-toggle" class="sr-only peer">
+                                <div
+                                    class="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea id="prompt" rows="4"
+                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 focus:ring-2 focus:ring-purple-500 transition-all outline-none resize-none"
+                            placeholder="Ej: 'Mejora la iluminación' o 'Ponle un fondo de playa'"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Prompt Negativo</label>
+                        <textarea id="negative_prompt" rows="3"
+                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 focus:ring-2 focus:ring-purple-500 transition-all outline-none resize-none"
+                            placeholder="Lo que NO quieres que aparezca..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Settings -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 backdrop-blur-sm space-y-4">
+                    <!-- Resolution Presets -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-3">Proporción de Imagen</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="setResolution('square')" class="aspect-btn px-3 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 text-xs font-bold transition-all hover:border-cyan-500/50 hover:text-cyan-400 flex items-center justify-center gap-2">
+                                <span class="text-lg">▢</span>
+                                <div class="text-left">
+                                    <div class="font-bold">1:1</div>
+                                    <div class="text-[10px] opacity-70">Cuadrado</div>
+                                </div>
+                            </button>
+                            <button onclick="setResolution('portrait')" class="aspect-btn px-3 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 text-xs font-bold transition-all hover:border-cyan-500/50 hover:text-cyan-400 flex items-center justify-center gap-2">
+                                <span class="text-lg">📱</span>
+                                <div class="text-left">
+                                    <div class="font-bold">9:16</div>
+                                    <div class="text-[10px] opacity-70">Retrato</div>
+                                </div>
+                            </button>
+                            <button onclick="setResolution('landscape')" class="aspect-btn px-3 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 text-xs font-bold transition-all hover:border-cyan-500/50 hover:text-cyan-400 flex items-center justify-center gap-2">
+                                <span class="text-lg">🖥️</span>
+                                <div class="text-left">
+                                    <div class="font-bold">16:9</div>
+                                    <div class="text-[10px] opacity-70">Panorama</div>
+                                </div>
+                            </button>
+                            <button onclick="setResolution('wide')" class="aspect-btn px-3 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 text-xs font-bold transition-all hover:border-cyan-500/50 hover:text-cyan-400 flex items-center justify-center gap-2">
+                                <span class="text-lg">📺</span>
+                                <div class="text-left">
+                                    <div class="font-bold">21:9</div>
+                                    <div class="text-[10px] opacity-70">Ultra Wide</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Pasos</label>
+                            <input type="number" id="steps" value="20"
+                                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">CFG Scale</label>
+                            <input type="number" id="cfg" value="7" step="0.5"
+                                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Hidden inputs for width/height (controlled by buttons) -->
+                    <input type="hidden" id="width" value="512">
+                    <input type="hidden" id="height" value="512">
+                    <div id="strength-container" class="hidden">
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Denoising Strength
+                            (Creatividad)</label>
+                        <input type="range" id="strength" min="0.1" max="1.0" step="0.05" value="0.75"
+                            class="w-full accent-cyan-500">
+                        <div class="flex justify-between text-[10px] text-slate-500">
+                            <span>Sutil (0.1)</span>
+                            <span id="strength-val">0.75</span>
+                            <span>Nuevo (1.0)</span>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center justify-between bg-slate-900/50 p-2 rounded-xl border border-slate-700/50">
+                        <span class="text-[10px] text-slate-500 font-bold uppercase ml-2">Mantener Semilla
+                            (Iteración)</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="seed-lock" class="sr-only peer">
+                            <div
+                                class="w-7 h-4 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-cyan-600">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Developer Credits -->
+                <div class="bg-gradient-to-r from-cyan-900/20 to-purple-900/20 p-4 rounded-2xl border border-cyan-500/20 backdrop-blur-sm mb-6">
+                    <div class="text-center">
+                        <div class="text-xs font-bold text-cyan-400 mb-1 uppercase tracking-wider">Desarrollado por</div>
+                        <div class="text-sm font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Kevscl</div>
+                        <div class="text-[10px] text-slate-500 mt-1">Full-Stack Developer • AI Specialist</div>
+                        <div class="flex justify-center gap-2 mt-2">
+                            <span class="text-[10px] bg-slate-800 px-2 py-1 rounded text-cyan-400">React</span>
+                            <span class="text-[10px] bg-slate-800 px-2 py-1 rounded text-purple-400">Symfony</span>
+                            <span class="text-[10px] bg-slate-800 px-2 py-1 rounded text-green-400">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Tips Panel -->
+                <div
+                    class="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 p-6 rounded-2xl border border-purple-500/20 backdrop-blur-sm">
+                    <h4
+                        class="text-xs font-bold text-purple-400 mb-3 uppercase tracking-widest flex items-center gap-2">
+                        <span>💡</span> Guía de Optimización
+                    </h4>
+                    <ul class="text-[11px] text-slate-400 space-y-2 leading-relaxed">
+                        <li><strong class="text-slate-300 transition-colors hover:text-cyan-400 cursor-help"
+                                title="Usa presets pre-configurados para mejores resultados">Herramientas:</strong> Cada preset
+                            tiene configuración optimizada para resultados profesionales de edición.</li>
+                        <li><strong class="text-slate-300 transition-colors hover:text-cyan-400 cursor-help"
+                                title="SD 1.5 con strength 0.25 para máxima preservación">Cambiar Ropa:</strong> Usa SD 1.5 con strength 0.25 para mínima distorsión. Si necesitas más cambio, aumenta gradualmente a 0.35.</li>
+                        <li><strong class="text-slate-300 transition-colors hover:text-cyan-400 cursor-help"
+                                title="Realistic Vision con strength 0.55 para cambios de pose">Cambiar Pose:</strong> Permite cambios de posición manteniendo la identidad completa.</li>
+                        <li><strong class="text-slate-300 transition-colors hover:text-cyan-400 cursor-help"
+                                title="Modelos se filtran automáticamente según el preset">Selección de Modelo:</strong>
+                            Cada preset selecciona automáticamente el mejor modelo disponible para ese caso de uso.</li>
+                        <li><strong class="text-slate-300 transition-colors hover:text-cyan-400 cursor-help"
+                                title="worst quality, low quality, bad anatomy, ugly, deformed">Prompts Negativos:</strong>
+                            Se optimizan automáticamente según el estilo artístico seleccionado.</li>
+                        <li><strong class="text-slate-300 transition-colors hover:text-cyan-400 cursor-help"
+                                title="Proporciones optimizadas: 16:9, 9:16, 1:1, 21:9">Resolución:</strong> Usa los botones de proporción para formatos sociales optimizados.</li>
+                        <li><strong class="text-red-400 transition-colors hover:text-red-300 cursor-help"
+                                title="16GB DDR4 es suficiente para imágenes, pero video requiere optimización">⚠️ Rendimiento:</strong> Optimizado para CPU Ryzen - video genera frames pequeños para estabilidad.</li>
+                        <li><strong class="text-slate-300 transition-colors hover:text-cyan-400 cursor-help"
+                                title="Sube fotos de alta calidad con buena iluminación">Calidad:</strong> Los mejores resultados provienen de fotos bien iluminadas y en foco.</li>
+                    </ul>
+                </div>
+
+                <button id="generate-btn"
+                    class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-bold rounded-2xl shadow-lg shadow-purple-900/20 transform active:scale-[0.98] transition-all flex items-center justify-center gap-2 group">
+                    <span class="text-xl">✨</span>
+                    PROCESAR IMAGEN
+                </button>
+            </aside>
+
+            <!-- Main Display -->
+            <main class="lg:col-span-8 flex flex-col gap-6">
+                <div id="display-area"
+                    class="flex-grow bg-slate-800/30 rounded-3xl border-2 border-dashed border-slate-700 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px] group shadow-2xl">
+
+                    <!-- Main Focus: Initial Image / Working Canvas -->
+                    <div id="canvas-container" class="w-full h-full flex flex-col items-center justify-center p-4">
+                        <div id="empty-state" class="text-center p-12">
+                            <div class="text-6xl mb-4 opacity-20 group-hover:opacity-40 transition-opacity">🖼️</div>
+                            <p class="text-slate-500 font-medium">Sube una imagen o genera una nueva</p>
+                        </div>
+
+                        <!-- The Big Image (Input or result) -->
+                        <img id="main-canvas-img"
+                            class="hidden max-w-full max-h-[450px] object-contain rounded-2xl shadow-cyan-500/10 ring-1 ring-white/10"
+                            src="" alt="Main View">
+                        <video id="main-canvas-vid"
+                            class="hidden max-w-full max-h-[450px] object-contain rounded-2xl shadow-purple-500/10"
+                            controls></video>
+                    </div>
+
+                    <!-- Progress Overlay -->
+                    <div id="progress-container"
+                        class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center z-50">
+                        <div
+                            class="relative w-64 h-3 bg-slate-800 rounded-full overflow-hidden border border-white/5 mb-6">
+                            <div id="progress-bar"
+                                class="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 bg-[length:200%_100%] animate-gradient-x transition-all duration-300">
+                            </div>
+                        </div>
+                        <p id="progress-label"
+                            class="text-cyan-400 font-bold tracking-widest text-sm animate-pulse uppercase">Procesando
+                            con alta fidelidad...</p>
+                    </div>
+                </div>
+
+                <!-- Secondary Results Bar (Horizontal Result Display) -->
+                <div id="results-bar"
+                    class="hidden bg-slate-800/50 p-4 rounded-2xl border border-slate-700 flex flex-col gap-3">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Último
+                            Resultado</h3>
+                        <span class="text-[10px] text-cyan-500 font-mono">100% Fidelity</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-32 h-32 rounded-lg overflow-hidden border border-white/10 shrink-0">
+                            <img id="small-result-img" class="hidden w-full h-full object-cover" src="">
+                            <video id="small-result-vid" class="hidden w-full h-full object-cover"></video>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="text-xs text-slate-400 italic">"La esencia se captura en los detalles..."</p>
+                            <button
+                                onclick="document.getElementById('main-canvas-img').src = document.getElementById('small-result-img').src; document.getElementById('main-canvas-img').classList.remove('hidden');"
+                                class="mt-2 text-[10px] text-cyan-400 hover:text-white transition-colors flex items-center gap-1">
+                                <span>🔍</span> AMPLIAR EN LIENZO PRINCIPAL
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery / History -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                    <h3 class="text-sm font-bold text-slate-300 mb-4 uppercase tracking-wider">Historial Reciente</h3>
+                    <div id="gallery" class="grid grid-cols-4 md:grid-cols-6 gap-3">
+                        <!-- History items go here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const generateBtn = document.getElementById('generate-btn');
+    const resultImage = document.getElementById('result-image');
+    const resultVideo = document.getElementById('result-video');
+    const progressContainer = document.getElementById('progress-container');
+    const progressBar = document.getElementById('progress-bar');
+    const progressLabel = document.getElementById('progress-label');
+
+    const modeBtns = document.querySelectorAll('.mode-btn');
+    const initImageContainer = document.getElementById('init-image-container');
+    const initImageInput = document.getElementById('init-image-input');
+    const initImagePreview = document.getElementById('init-image-preview');
+    const initImageImg = document.getElementById('init-image-img');
+    let currentMode = 'txt2img';
+    let initImageBase64 = null;
+    let lastSeed = -1;
+
+    const negativePrompts = {
+        general: "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, ugly, deformed, disfigured, mutation, poorly drawn face, extra limbs, face cut, head cut",
+        anime: "score_6, score_5, score_4, (worst quality, low quality:1.2), bad anatomy, bad hands, text, watermark, signature, blurry, monochrome, grayscale, comic, sketch, censor, mosaic, bar, censored, ugly, deformed, disfigured, mutation, poorly drawn face, extra limbs, face cut, head cut, different face, distorted face",
+        realistic: "ugly, deformed, disfigured, poor details, bad anatomy, mutation, poorly drawn face, blurry, lowres, bad hands, text, watermark, error, extra limbs, face cut, head cut, extra fingers, fewer fingers, worst quality, low quality, normal quality, jpeg artifacts, signature, username, different face, distorted face, bad face, ugly face, deformed face",
+        hentai: "score_6, score_5, score_4, (worst quality, low quality:1.4), bad anatomy, bad hands, text, watermark, signature, blurry, monochrome, grayscale, comic, sketch, censor, mosaic, bar, censored, ugly, deformed, disfigured, mutation, poorly drawn face, extra limbs, face cut, head cut, different face, distorted face, bad proportions",
+        video: "flickering, blurry, distorted, low resolution, static, noise, grain, bad motion, deformed, ugly, disfigured, different face, distorted face"
+    };
+
+    function updateNegativePrompt() {
+        const model = document.getElementById('model-select').value.toLowerCase();
+        const negTextArea = document.getElementById('negative_prompt');
+
+        if (currentMode.includes('vid') || model.includes('svd')) {
+            negTextArea.value = negativePrompts.video;
+        } else if (model.includes('pony') || model.includes('anime') || model.includes('hentai') || model.includes('mix')) {
+            negTextArea.value = negativePrompts.hentai;
+        } else if (model.includes('cyber') || model.includes('realistic') || model.includes('vision')) {
+            negTextArea.value = negativePrompts.realistic;
+        } else {
+            negTextArea.value = negativePrompts.general;
+        }
+    }
+
+    // Resolution button handler
+    function setResolution(aspect) {
+        // Remove active class from all buttons
+        document.querySelectorAll('.aspect-btn').forEach(btn => {
+            btn.classList.remove('active', 'border-cyan-500/50', 'text-cyan-400');
+            btn.classList.add('border-slate-700', 'text-slate-400');
+        });
+
+        // Add active class to clicked button
+        event.target.closest('.aspect-btn').classList.add('active', 'border-cyan-500/50', 'text-cyan-400');
+        event.target.closest('.aspect-btn').classList.remove('border-slate-700', 'text-slate-400');
+
+        // Set resolution based on aspect ratio
+        const widthInput = document.getElementById('width');
+        const heightInput = document.getElementById('height');
+
+        switch(aspect) {
+            case 'square':
+                widthInput.value = 512;
+                heightInput.value = 512;
+                break;
+            case 'portrait':
+                widthInput.value = 768;
+                heightInput.value = 1024;
+                break;
+            case 'landscape':
+                widthInput.value = 1024;
+                heightInput.value = 768;
+                break;
+            case 'wide':
+                widthInput.value = 1344;
+                heightInput.value = 768;
+                break;
+        }
+    }
+
+    // Mode Selection Logic
+    // --- PRESETS LOGIC ---
+    // --- PRESETS LOGIC ---
+    // Model recommendations based on use case
+    const modelRecommendations = {
+        single_person_realistic: ['v1-5-pruned-emaonly.safetensors', 'cyberrealistic_v90.safetensors', 'realisticVisionV60B1_v51HyperVAE.safetensors'], // SD 1.5 first for conservative edits
+        conservative_editing: ['v1-5-pruned-emaonly.safetensors'], // Ultra-conservative for clothing changes
+        multiple_people: ['realisticVisionV60B1_v51HyperVAE.safetensors', 'v1-5-pruned-emaonly.safetensors'],
+        anime_style: ['ponyDiffusionV6XL_v6StartWithThisOne.safetensors', 'hentaiMixXLRoadTo_v50.safetensors', 'autismmixSDXL_autismmixPony.safetensors'],
+        artistic_digital: ['hentaiMixXLRoadTo_v50.safetensors', 'autismmixSDXL_autismmixPony.safetensors', 'ponyDiffusionV6XL_v6StartWithThisOne.safetensors'],
+        viral_funny: ['v1-5-pruned-emaonly.safetensors', 'realisticVisionV60B1_v51HyperVAE.safetensors'],
+        video: ['svd_xt.safetensors', 'svd.safetensors']
+    };
+
+    const presets = {
+        'anime': {
+            mode: 'txt2img',
+            model: modelRecommendations.anime_style[0], // Auto-select best anime model
+            prompt: 'masterpiece, best quality, score_9, score_8_up, score_7_up, score_6_up, source_anime, 1girl, solo, female focus, beautiful detailed eyes, detailed face, light smile, detailed skin, perfect anatomy',
+            neg: negativePrompts.hentai,
+            steps: 30,
+            cfg: 7.5,
+            width: 832,
+            height: 1216,
+            magic: true
+        },
+        'lingerie': {
+            mode: 'img2img', // User must upload image
+            model: modelRecommendations.conservative_editing[0], // SD 1.5 for ultra-conservative clothing edits
+            prompt: 'RAW photo, photorealistic, wearing lingerie, lace, detailed, same face, same hair, same body, same pose, same expression, highly detailed, professional photography, natural skin',
+            neg: 'bad anatomy, bad hands, text, watermark, ugly, deformed, disfigured, blurry, lowres, bad face, different face, distorted face, extra limbs, different eyes, different hair, different body, different pose, mutation, poorly drawn face, extra fingers, fewer fingers, worst quality, low quality',
+            steps: 15, // Fewer steps for less processing
+            cfg: 4.0, // Much lower for very conservative changes
+            strength: 0.25, // Ultra-low to preserve almost everything
+            magic: false,
+            seedlock: true // Consistent results
+        },
+        'memerep': {
+            mode: 'img2img',
+            model: modelRecommendations.viral_funny[0], // General model for viral content
+            prompt: 'high quality, meme style, funny, viral image, same composition, text overlay style',
+            neg: 'blurry, low quality, distorted, ugly',
+            steps: 25,
+            cfg: 7.0,
+            strength: 0.45,
+            magic: false,
+            seedlock: false
+        },
+        'changepose': {
+            mode: 'img2img',
+            model: modelRecommendations.single_person_realistic[0], // Best for pose changes with face preservation
+            prompt: 'RAW photo, photorealistic, 8k, same person, same face, same hair, same clothes, different pose, dynamic pose, action pose, highly detailed, masterpiece, professional photography, sharp focus, natural lighting',
+            neg: 'bad anatomy, bad hands, text, watermark, ugly, deformed, disfigured, poor details, blurry, lowres, bad face, different face, distorted face, extra limbs, face cut, head cut, different eyes, different hair, same pose, static pose, boring pose, mutation, poorly drawn face',
+            steps: 25,
+            cfg: 7.5,
+            strength: 0.55, // Medium strength for pose change but face preservation
+            magic: false,
+            seedlock: true
+        },
+        'makefunny': {
+            mode: 'img2img',
+            model: 'v1-5-pruned-emaonly.safetensors',
+            prompt: 'funny face, distorted, caricature, meme, exaggerated features, high quality, humor',
+            neg: 'normal, boring, realistic, serious',
+            steps: 25,
+            cfg: 8.0,
+            strength: 0.75,
+            magic: true,
+            seedlock: false
+        },
+        'hentai': {
+            mode: 'txt2img',
+            model: modelRecommendations.artistic_digital[0], // Best for artistic digital content
+            prompt: 'masterpiece, best quality, ultra-detailed, 1girl, solo, female focus, beautiful detailed eyes, detailed face, light smile, detailed skin, perfect anatomy, dynamic pose, bedroom eyes, seductive look',
+            neg: negativePrompts.hentai,
+            steps: 25,
+            cfg: 7.0,
+            width: 768,
+            height: 1152, // Portrait for digital art
+            magic: true,
+            seedlock: false
+        },
+        'realism': {
+            mode: 'txt2img',
+            model: modelRecommendations.single_person_realistic[0], // Best for single person photorealism
+            prompt: 'RAW photo, 8k, photorealistic, masterpiece, highly detailed, 1girl, solo, female focus, beautiful face, detailed skin texture, natural lighting, bedroom setting, perfect anatomy, professional photography, sharp focus',
+            neg: negativePrompts.realistic,
+            steps: 30,
+            cfg: 6.5,
+            width: 768,
+            height: 1024, // Portrait for realism
+            magic: true,
+            seedlock: false
+        },
+        'videoh': {
+            mode: 'img2vid',
+            model: modelRecommendations.video[0], // Auto-select best video model
+            prompt: 'smooth motion, fluid animation, high quality, detailed',
+            neg: negativePrompts.video,
+            steps: 8, // Optimized for CPU memory
+            cfg: 3.0,
+            width: 512, // Smaller for CPU
+            height: 288,
+            magic: false,
+            seedlock: true
+        },
+        'news_anchor': {
+            mode: 'txt2img',
+            model: 'realisticVisionV60B1_v51HyperVAE.safetensors', // Best for studio lighting
+            prompt: 'professional news anchor, male presenter in suit, breaking news tv studio background, looking at camera, high quality, 8k, realistic, detailed face, professional lighting',
+            neg: 'cartoon, anime, 3d, painting, bad anatomy, bad hands, distorted face, ugly',
+            steps: 30,
+            cfg: 7.0,
+            width: 768,
+            height: 512, // TV Landscape
+            magic: true,
+            seedlock: false
+        },
+        'anim_anchor': {
+            mode: 'img2vid',
+            model: 'svd_xt.safetensors', // Extended video model
+            prompt: '', // SVD uses image motion primarily
+            neg: '',
+            steps: 15, // Slightly more steps for smoothness
+            cfg: 3.0, // Standard SVD
+            width: 1024,
+            height: 576,
+            magic: false,
+            seedlock: false
+        }
+    };
+
+    function applyPreset(key) {
+        const p = presets[key];
+        if (!p) return;
+
+        // Visual Feedback
+
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: 'Preset Aplicado: ' + key.toUpperCase(),
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#1e293b',
+            color: '#f1f5f9'
+        });
+
+        // Set Mode
+        document.getElementById(`mode-${p.mode}`).click(); // Triggers existing logic
+
+        // Set Model and Filter Options
+        const modelSelect = document.getElementById('model-select');
+        const allOptions = Array.from(modelSelect.options);
+
+        // Show only recommended models for this preset
+        let recommendedModels = [];
+        if (key === 'anime') recommendedModels = modelRecommendations.anime_style;
+        else if (key === 'lingerie' || key === 'changepose') recommendedModels = modelRecommendations.single_person_realistic;
+        else if (key === 'realism') recommendedModels = modelRecommendations.single_person_realistic;
+        else if (key === 'memerep' || key === 'makefunny') recommendedModels = modelRecommendations.viral_funny;
+        else if (key === 'videoh') recommendedModels = modelRecommendations.video;
+        else recommendedModels = [p.model]; // Default to preset model
+
+        // Filter options
+        allOptions.forEach(option => {
+            const isRecommended = recommendedModels.includes(option.value);
+            option.style.display = isRecommended ? 'block' : 'none';
+        });
+
+        // Select the best recommended model
+        const bestModel = recommendedModels.find(model =>
+            allOptions.some(opt => opt.value === model && opt.style.display !== 'none')
+        ) || p.model;
+
+        if (Array.from(modelSelect.options).some(o => o.value === bestModel && o.style.display !== 'none')) {
+            modelSelect.value = bestModel;
+        }
+
+        // Set Values
+        document.getElementById('prompt').value = p.prompt;
+        document.getElementById('negative_prompt').value = p.neg || '';
+        document.getElementById('steps').value = p.steps || 20;
+        document.getElementById('cfg').value = p.cfg || 7.0;
+        document.getElementById('magic-toggle').checked = p.magic;
+
+        // Special handling for clothing changes - show strength guidance
+        if (key === 'lingerie') {
+            setTimeout(() => {
+                Swal.fire({
+                    title: '💡 Consejos para Cambiar Ropa',
+                    html: `
+                        <div style="text-align: left; font-size: 14px;">
+                            <strong>Strength actual: 0.25</strong> (muy conservador)<br><br>
+                            <strong>Si la ropa no cambia suficiente:</strong><br>
+                            • Aumenta strength a 0.35<br>
+                            • O usa el botón de "Cambiar Pose" después<br><br>
+                            <strong>Si la cara se distorsiona:</strong><br>
+                            • Strength nunca mayor a 0.4<br>
+                            • Usa fotos con buena iluminación<br>
+                            • Rostro debe estar claramente visible
+                        </div>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: 'Entendido',
+                    background: '#1e293b',
+                    color: '#f1f5f9'
+                });
+            }, 500);
+        }
+
+        // Auto-Set Resolution
+        if (p.width) document.getElementById('width').value = p.width;
+        if (p.height) document.getElementById('height').value = p.height;
+
+        if (p.strength) {
+            document.getElementById('strength').value = p.strength;
+            document.getElementById('strength-val').textContent = p.strength;
+        }
+
+        // Auto-Adjust Seed Lock
+        document.getElementById('seed-lock').checked = p.seedlock || false;
+    }
+
+    // Strength Slider Sync
+    const strengthContainer = document.getElementById('strength-container');
+    const strengthSlider = document.getElementById('strength');
+    const strengthVal = document.getElementById('strength-val');
+
+    strengthSlider.addEventListener('input', (e) => {
+        strengthVal.textContent = e.target.value;
+    });
+
+    // Model filtering function
+    function resetModelFilter() {
+        const modelSelect = document.getElementById('model-select');
+        const allOptions = Array.from(modelSelect.options);
+        allOptions.forEach(option => {
+            option.style.display = 'block';
+        });
+    }
+
+    // Model Options Logic
+    const modelSelect = document.getElementById('model-select');
+    const allOptions = Array.from(modelSelect.options);
+
+    function filterModels(mode) {
+        // Show all first
+        allOptions.forEach(opt => opt.hidden = false);
+
+        // Logic to hide models based on mode
+        if (mode.includes('vid')) {
+            // Only show video models
+            allOptions.forEach(opt => {
+                const isVideo = opt.parentElement.label === 'Video';
+                if (!isVideo) opt.hidden = true;
+            });
+            // Auto select first visible
+            const firstVisible = allOptions.find(opt => !opt.hidden);
+            if (firstVisible) modelSelect.value = firstVisible.value;
+        } else {
+            // Hide video models
+            allOptions.forEach(opt => {
+                const isVideo = opt.parentElement.label === 'Video';
+                if (isVideo) opt.hidden = true;
+            });
+            // Select a standard model if current selection is video or hidden
+            if (modelSelect.selectedOptions[0].hidden) {
+                modelSelect.value = "v1-5-pruned-emaonly.safetensors";
+            }
+        }
+    }
+
+    // Mode Selection Logic
+    modeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modeBtns.forEach(b => {
+                b.classList.remove('active', 'border-cyan-500/50', 'text-cyan-400');
+                b.classList.add('border-slate-700', 'text-slate-400');
+            });
+            btn.classList.add('active', 'border-cyan-500/50', 'text-cyan-400');
+            btn.classList.remove('border-slate-700', 'text-slate-400');
+
+            currentMode = btn.id.replace('mode-', '');
+
+            // Show/Hide Init Image Upload & Strength
+            if (currentMode.includes('img2')) {
+                initImageContainer.classList.remove('hidden');
+                strengthContainer.classList.remove('hidden');
+            } else {
+                initImageContainer.classList.add('hidden');
+                strengthContainer.classList.add('hidden');
+            }
+
+            filterModels(currentMode);
+            resetModelFilter(); // Reset model filtering when mode changes
+
+            // AUTO-ADJUST DEFAULTS ON MODE CHANGE
+            if (currentMode === 'img2img') {
+                document.getElementById('strength').value = 0.75;
+                document.getElementById('strength-val').textContent = "0.75";
+            } else if (currentMode.includes('vid')) {
+                document.getElementById('steps').value = 10;
+                document.getElementById('cfg').value = 2.5;
+            } else {
+                // Return to standard values for txt2img if not set by preset
+                document.getElementById('steps').value = 20;
+                document.getElementById('cfg').value = 7.0;
+            }
+
+            updateNegativePrompt();
+        });
+    });
+
+    // Init Logic
+    filterModels('txt2img');
+
+    document.getElementById('model-select').addEventListener('change', updateNegativePrompt);
+    updateNegativePrompt(); // Initial call
+
+    // Image Upload Logic
+    initImageInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (readerEvent) => {
+                initImageBase64 = readerEvent.target.result;
+                initImageImg.src = initImageBase64;
+                initImageImg.classList.remove('hidden');
+                initImagePreview.classList.add('hidden');
+
+                // Also show prominently on the main canvas for editing/reference
+                const mainImg = document.getElementById('main-canvas-img');
+                const mainVid = document.getElementById('main-canvas-vid');
+                mainImg.src = initImageBase64;
+                mainImg.classList.remove('hidden');
+                mainVid.classList.add('hidden');
+                document.getElementById('empty-state').classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    generateBtn.addEventListener('click', async () => {
+        const prompt = document.getElementById('prompt').value;
+        if (!prompt && !currentMode.includes('vid')) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Ops...',
+                text: 'Dime qué quieres que genere',
+                background: '#1e293b',
+                color: '#f1f5f9'
+            });
+            return;
+        }
+
+        if (currentMode.includes('img2') && !initImageBase64) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Imagen requerida',
+                text: 'Por favor sube una imagen inicial para este modo',
+                background: '#1e293b',
+                color: '#f1f5f9'
+            });
+            return;
+        }
+
+        // UI Feedback
+        progressContainer.classList.remove('hidden');
+        generateBtn.disabled = true;
+
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 5;
+            if (progress > 95) progress = 95;
+            progressBar.style.width = `${progress}%`;
+        }, 1000);
+
+        try {
+            const isMagic = document.getElementById('magic-toggle').checked;
+            const isSeedLocked = document.getElementById('seed-lock').checked;
+
+            const response = await fetch("{{ path('api_generate') }}", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    mode: currentMode,
+                    prompt,
+                    negative_prompt: document.getElementById('negative_prompt').value,
+                    model: document.getElementById('model-select').value,
+                    model: document.getElementById('model-select').value,
+                    steps: document.getElementById('steps').value,
+                    cfg: document.getElementById('cfg').value,
+                    width: document.getElementById('width').value,
+                    height: document.getElementById('height').value,
+                    strength: document.getElementById('strength').value,
+                    init_image: initImageBase64,
+                    magic: isMagic,
+                    seed: isSeedLocked ? lastSeed : -1
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.status === 'success') {
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+
+                // Update with translated prompt if magic was used
+                if (result.expanded_prompt) {
+                    console.log("AI Magic Prompt:", result.expanded_prompt);
+                    document.getElementById('prompt').value = result.expanded_prompt;
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'info',
+                        title: 'Prompt mejorado con IA',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+
+                if (result.seed) lastSeed = result.seed;
+
+                // Show result
+                document.getElementById('empty-state').classList.add('hidden');
+                document.getElementById('results-bar').classList.remove('hidden');
+
+                const relativeUrl = result.url.startsWith('/') ? result.url.substring(1) : result.url;
+                const fullUrl = relativeUrl; // Use relative path to avoid asset() 404 issues
+
+                const smallImg = document.getElementById('small-result-img');
+                const smallVid = document.getElementById('small-result-vid');
+                const mainImg = document.getElementById('main-canvas-img');
+                const mainVid = document.getElementById('main-canvas-vid');
+
+                if (result.type === 'video') {
+                    smallImg.classList.add('hidden');
+                    smallVid.src = fullUrl;
+                    smallVid.classList.remove('hidden');
+                } else {
+                    smallVid.classList.add('hidden');
+                    smallImg.src = fullUrl;
+                    smallImg.classList.remove('hidden');
+                }
+
+                // Add to gallery
+                const gallery = document.getElementById('gallery');
+                const thumbnail = document.createElement('div');
+                thumbnail.className = "relative group cursor-pointer border-2 border-transparent hover:border-cyan-500 rounded-xl transition-all p-1";
+
+                if (result.type === 'video') {
+                    thumbnail.innerHTML = `<video src="${fullUrl}" class="w-full aspect-square object-cover rounded-lg"></video><div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">🎥</div>`;
+                } else {
+                    thumbnail.innerHTML = `<img src="${fullUrl}" class="w-full aspect-square object-cover rounded-lg">`;
+                }
+
+                thumbnail.onclick = () => {
+                    if (result.type === 'video') {
+                        mainImg.classList.add('hidden');
+                        mainVid.src = fullUrl;
+                        mainVid.classList.remove('hidden');
+                    } else {
+                        mainVid.classList.add('hidden');
+                        mainImg.src = fullUrl;
+                        mainImg.classList.remove('hidden');
+                    }
+                };
+                gallery.prepend(thumbnail);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Generación completada!',
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    background: '#1e293b',
+                    color: '#f1f5f9'
+                });
+            } else {
+                throw new Error(result.message);
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de Generación',
+                text: error.message,
+                background: '#1e293b',
+                color: '#f1f5f9'
+            });
+        } finally {
+            clearInterval(interval);
+            progressContainer.classList.add('hidden');
+            generateBtn.disabled = false;
+            progressBar.style.width = '0%';
+        }
+    });
+
+    // --- SYSTEM & GALLERY MANAGER ---
+    // Server control logic removed by request
+
+    async function loadGallery() {
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = '';
+        try {
+            const res = await fetch("{{ path('api_gallery') }}");
+            const images = await res.json();
+
+            if (images.length === 0) {
+                gallery.innerHTML = '<p class="text-slate-500 col-span-full text-center py-4">Sin imágenes aún</p>';
+                return;
+            }
+
+            images.forEach(img => {
+                const div = document.createElement('div');
+                div.className = "relative group cursor-pointer border-2 border-transparent hover:border-cyan-500 rounded-xl transition-all p-1 overflow-hidden";
+
+                let content = '';
+                if (img.type === 'video') {
+                    content = `<video src="${img.url}" class="w-full aspect-square object-cover rounded-lg"></video><div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">🎥</div>`;
+                } else {
+                    content = `<img src="${img.url}" class="w-full aspect-square object-cover rounded-lg">`;
+                }
+
+                // Delete Button
+                const delBtn = document.createElement('button');
+                delBtn.innerHTML = '🗑️';
+                delBtn.className = "absolute top-2 right-2 bg-red-500/80 p-1 rounded hover:bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity z-10 text-xs shadow-lg";
+                delBtn.onclick = async (e) => {
+                    e.stopPropagation();
+                    if (!confirm('¿Borrar este archivo permanentemente?')) return;
+
+                    const res = await fetch("{{ path('api_delete_file') }}", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ filename: img.filename })
+                    });
+                    if (res.ok) {
+                        div.remove();
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Archivo eliminado',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            background: '#1e293b',
+                            color: '#f1f5f9'
+                        });
+                    }
+                };
+
+                div.innerHTML = content;
+                div.appendChild(delBtn);
+
+                div.onclick = () => {
+                    // Main view logic
+                    const mainImg = document.getElementById('main-canvas-img');
+                    const mainVid = document.getElementById('main-canvas-vid');
+                    const empty = document.getElementById('empty-state');
+
+                    empty.classList.add('hidden');
+
+                    if (img.type === 'video') {
+                        mainImg.classList.add('hidden');
+                        mainVid.src = img.url;
+                        mainVid.classList.remove('hidden');
+                    } else {
+                        mainVid.classList.add('hidden');
+                        mainImg.src = img.url;
+                        mainImg.classList.remove('hidden');
+                    }
+                };
+
+                gallery.appendChild(div);
+            });
+        } catch (e) {
+            console.error("Gallery errors", e);
+        }
+    }
+
+    // Initial Load
+    loadGallery();
+
+    // TODO: Implement image manipulation and video support
+</script>
+{% endblock %}

@@ -1,0 +1,28 @@
+# AI Image Studio - Requirements
+# =================================
+
+# Core ML/AI libraries
+torch>=2.0.0
+diffusers>=0.24.0
+transformers>=4.30.0
+accelerate>=0.20.0
+
+# Image processing
+Pillow>=9.0.0
+opencv-python>=4.8.0
+
+# Web framework
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+python-multipart>=0.0.6
+
+# Utilities
+requests>=2.31.0
+safetensors>=0.4.0
+
+# Optional: Memory monitoring
+psutil>=5.9.0
+
+# Development
+pytest>=7.0.0
+black>=23.0.0

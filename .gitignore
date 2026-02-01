@@ -1,0 +1,123 @@
+# ============================================
+# AI Image Studio - GitIgnore Configuration
+# ============================================
+
+# === MODELOS PESADOS (NO SUBIR A GITHUB) ===
+# Archivos de modelos de IA - Descargar manualmente
+models/
+*.safetensors
+*.bin
+*.ckpt
+*.pth
+*.onnx
+
+# === DEPENDENCIAS Y ENTORNOS VIRTUALES ===
+# Python virtual environment
+api/venv/
+venv/
+env/
+ENV/
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# PHP Composer
+api/vendor/
+vendor/
+
+# === ARCHIVOS DE CONFIGURACIÓN LOCAL ===
+# Environment files
+.env.local
+.env.*.local
+.env.production
+.env.staging
+
+# Symfony specific
+/config/secrets/
+/public/bundles/
+/var/
+/vendor/
+
+# === LOGS Y ARCHIVOS TEMPORALES ===
+# Application logs
+*.log
+logs/
+api/server_log.txt
+api/latest_error.txt
+api/debug_*.txt
+api/debug_*.py
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# === ARCHIVOS GENERADOS ===
+# Imágenes generadas
+web/public/outputs/
+api/models/svd_xt_config/image_encoder/model.safetensors
+
+# Videos generados
+*.mp4
+*.webm
+*.avi
+
+# === IDE Y EDITOR ===
+# VS Code
+.vscode/
+*.code-workspace
+
+# Cursor
+.cursor/
+
+# JetBrains
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+
+# === BASE DE DATOS ===
+*.sqlite
+*.sqlite3
+*.db
+
+# === ARCHIVOS DE SEGURIDAD ===
+# SSH keys
+*.pem
+*.key
+*.p12
+*.pfx
+
+# === CARPETAS DE BUILD ===
+build/
+dist/
+*.egg-info/
+
+# === ARCHIVOS DE TEST ===
+test_*.py
+*_test.py
+tests/
+
+# === DOCUMENTACIÓN GENERADA ===
+docs/_build/
+*.pdf
+*.docx
